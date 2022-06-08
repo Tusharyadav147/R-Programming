@@ -1,0 +1,239 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+```{r}
+demo <- "Hello Tushar Sonp"
+print(demo)
+```
+```{r}
+sum <- 5+6
+print(sum)
+```
+```{r}
+# To know all the packages name
+sessionInfo()
+```
+```{r}
+x <- 1:10
+x
+```
+
+```{r}
+
+# variable in r programmming
+.value = "hello"
+value = "HI"
+value.first = "Ha"
+print(.value)
+print(value.first)
+
+# assignment of variable
+
+var1 <- 1
+var2 = 2.3
+10 -> var3
+
+cat(var1, " ", var2, "\n", var3)    # use cat function to print multiple values
+```
+
+data types in R
+ 1. logical
+ 2. numeric
+ 3. integer
+ 4. comoplex
+ 5. character
+```{r}
+class(var2)
+typeof(var2)
+typeof(var1)
+```
+ 
+ ## convert data type
+ num1 <- as.numeric(26L)
+num1 
+
+num1 <- as.numeric(-12)
+num1
+
+num = as.numeric(12.234)
+num
+
+num = as.integer((12.23))
+
+num
+num = as.integer(-123.23)
+num
+
+```{r}
+# Convert data type
+nu1 <- as.numeric(26L)
+num1 <- as.numeric(-12)
+num = as.numeric(12.234)
+typeof(nu1)
+typeof(num1)
+typeof(num)
+```
+```{r}
+num = as.integer((12.23))
+num1 = as.integer(-123.23)
+typeof(num)
+typeof(num1)
+```
+```{r}
+if (is.integer(num))
+{
+  print("Its is a integer number")
+}else
+{
+  print("Its is not a integer number")
+}
+
+```
+
+## For Loop 
+```{r}
+x <- 1:10
+for (val in x){
+  if (val == 5){
+    next
+  }else{
+    print(val)
+  }
+}
+```
+## Repeat 
+```{r}
+# Its is just like while loop 
+x <- 1
+repeat{
+  print("Hello Tushar")
+  if (x == 5){
+    print("Khatam Tata ByBy")
+    break
+  }
+  x <- x+1
+}
+```
+## While Loop
+```{r}
+v<- c("Hello" ,"Tushar", "Sonp", "Neemuch")
+x<-0
+while (x< 6){
+  print(v[x])
+  x<- x+1
+}
+```
+
+
+```{r}
+for (y in 1:10){
+  print(paste("Number: ", y))      # paste always use inside print function to print multiple word & statements
+}
+```
+
+```{r}
+f<- c("Orange","apple", "Banana", "Graps", "Mango")
+for (i in f){
+  print(i)
+}
+```
+## Take Input Form User
+
+```{r}
+name<- readline(prompt = "Enter Your Name:- ")
+age<- readline(prompt= "Enter Your age:- ")
+print(paste("Hello",name))
+print(paste("Hello My name is", name, "My Age is ",age))
+```
+## Function in R
+```{r}
+my.function <- function(){
+  for (i in 1:10){
+    print(i)
+  }
+}
+my.function()
+```
+## Vectors in R
+```{r}
+# vector atomic  
+a<- c(3,4,5,1,5,7)
+print(a)
+
+b<- -3:5
+print(b)
+
+sq<- seq(1,5,by=.5)
+print(sq)
+
+sq1<- seq(1,5,length.out = 10)
+print(sq1)
+
+```
+```{r}
+# numeric vector
+
+numv<- c(12.2, 56.5, 3.43, 32.3, 32.5)
+class(numv)
+print(numv)
+
+intv<- c(5,6,7,2,4)
+print(typeof(intv))
+print(intv)
+
+intv<- as.integer(intv)
+print(typeof(intv))
+print(intv)
+```
+```{r}
+#character vector
+
+charv<- c(1,3,4,5,6,2)
+print(class(charv))
+print(charv)
+
+
+charv<- as.character(charv)
+print(class(charv))
+print(charv)
+```
+## Accessing elements of vector by indexing
+```{r}
+# In R index start from 1 not 0
+char_vec<- c("Tushar"= 12, "Shayam"= 123)
+print(char_vec[1])
+print(char_vec["Shayam"])
+```
+```{r}
+a1<- c(1,2,3,4,5,6,7,8)
+print(a1)
+a1[c(TRUE,FALSE, TRUE, FALSE, TRUE, FALSE, TRUE)]
+```
+## Vector Operations
+```{r}
+a1<- c(1,2,4,5)
+a2<- c(2,4,5,3)
+a1+a2
+
+a3<- c(a1,a2)
+a3
+
+a2[-3]    # use to skip index 3 element of vector
+a2[2:3]
+a2[c(2,3,2)]
+```
+```{r}
+# rep()
+rep(c(2,3,4), time= 4)
+rep(c(1,4,8), each = 2)
+rep(c(0,8), time= c(2,4))
+rep(1:4, length.out= 9)
+```
+
+
+
+
+
+

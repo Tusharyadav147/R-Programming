@@ -1,0 +1,133 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+## Find the factorial of a number
+```{r}
+num <- as.integer(readline(prompt = "Enter a number to find factorial:- "))
+fact <- 1
+if ((num == 1) & (num == 0)){
+  print(paste("Factorial of ", num, " is 0"))
+}else{
+  for (i in 1:num){
+    fact <- fact*i
+  }
+  print(fact)
+}
+
+```
+## A number entered by the user is checked whether it's a positive number or a negative number or zero.
+```{r}
+num <- as.double(readline(prompt = "Enter a number:- "))
+if (num > 0){
+  print("Its is a positive number")
+
+}else{
+  print("Its is a negative number")
+}
+```
+## R Program to Check Prime Number
+```{r}
+num <- as.integer(readline(prompt = "Enter a number:- "))
+count <- 0
+for (i in 2:(num-1)){
+  if (num%%i == 0){
+    count <- count +1
+    print(i)
+  }
+}
+if (count == 0){
+  print("Its is a prime number")
+}else{
+  print("Not a prime number")
+}
+```
+## R Program to check Armstrong Number
+```{r}
+num <- as.integer(readline(prompt = "Enter a number:- "))
+temp<- num
+sum <- 0
+while (temp >0){
+  digit = temp %% 10
+  sum = sum + (digit ^ 3)
+  temp = floor(temp / 10)
+}
+if (sum == num){
+  print("Its is an armstrong number")
+}else{
+  print("Its is not an armstrong number")
+}
+
+```
+
+## Check if a Number is Odd or Even in R Programming
+```{r}
+num <- as.integer(readline(prompt = "Enter a number:- "))
+if (num %% 2 == 0){
+  print("It is a even number")
+}else{
+  print("it is odd number")
+}
+```
+## R program to Find the Factorial of a Number Using Recursion
+```{r}
+factor <- function(n){
+  if (n <= 1){
+    return(1)
+  }else{
+    return( n * factor(n-1))
+  }
+}
+```
+
+```{r}
+factor(5)
+```
+## Use of next function
+```{r}
+x <- 1:5 
+for (val in x) {
+	 if (val == 3){ 
+	next }
+ print(val)
+ }
+```
+## R Program to Find L.C.M.
+```{r}
+num1 <- as.integer(readline(prompt = "Enter a number:- "))
+num2 <- as.integer(readline(prompt = "Enter another number:- "))
+
+if (num1 > num2){
+  greater <- num1
+}else{
+  greater <- num2
+}
+
+while (TRUE){
+  if ((greater %% num1 == 0) & (greater %% num2 == 0)){
+    print(paste("LCM is", greater))
+    break
+  }else{
+    greater <- greater + 1
+  }
+}
+```
+## R Program to Find H.C.F.
+```{r}
+num1 <- as.integer(readline(prompt = "Enter a number:- "))
+num2 <- as.integer(readline(prompt = "Enter another number:- "))
+
+if (num1 < num2){
+  smaller <- num1
+}else{
+  smaller <- num2
+}
+for (i in 1: smaller){
+  if ((num1 %% i == 0) & (num2 %% i == 0)){
+    hcf = i
+  }
+}
+print(paste("HCF of number is ", hcf))
+```
+
