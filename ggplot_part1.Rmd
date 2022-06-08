@@ -113,8 +113,42 @@ gg + labs(color = "State", size= "Density")
 ```{r}
 gg + scale_color_manual(name= "State", labels= c("Illinois", "Indiana", "Michigan", "Ohio", "Wisconsin"), values = c("IL"="blue", "IN" = "red", "MI"="green", "OH"= "brown", "WI"= "orange"))
 ```
+```{r}
+data(mpg, package = "ggplot2")
+```
 
+```{r}
+theme_set(theme_bw())
+```
 
+```{r}
+ggplot(mpg, aes(cty, hwy)) + geom_point() + geom_smooth(method = "lm", se = F) + labs(title = "Scatterplot with overlapping points", caption = "Source", subtitle = "MPG: City VS Highway Mileage", y = "Highway Mileage", x= "City")
+```
+## Jittered Points
+```{r}
+gg <- ggplot(mpg, aes(cty, hwy))
+gg + geom_jitter(width = .5, size = 1) + labs(title = "Jittered Points", subtitle = "mpg: City VS Highway Mileage", y = "Highway Mileage", x = "City")
+```
+## Count Plot
+```{r}
+ggplot(mpg, aes(cty, hwy)) + geom_count(col= "tomato3", show.legend = F) + labs(title= "Counts Plot", subtitle = "mpg: City VS Highway Mileage", y = "Highway Mileage", x = "City")
+```
+## Bubble Plot
+```{r}
+ggplot(mpg_select, aes(displ, cty)) + labs(subtitle = "mpg: Displacement VS City Mileage", title= "Bubble Chart") + geom_jitter(aes(col = manufacturer, size = hwy)) + geom_smooth(aes(col = manufacturer), method = "lm", se = F)
+```
+## Animated Bubble Chart
+```{r}
+library(gganimate)
+library(gapminder)
+g <- ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, frame = year)) + geom_point() + geom_smooth(aes(group = year), method = "lm", show.legend = FALSE) + facet_wrap("continent", scales = "free") + scale_x_log10()
+gganimate(g, interval= .2)
+```
+## Correlogrm
+```{r}
+library(ggcorrplot)
+corr <- round(cor, hc.order = TRUE, type = "lower", lab = TRUE, lab_size = 3, method = "circle", colors = c("tomato2", "white","springgreen3"), title = "Correlogram of mtcars", ggtheme = theme_bw)
+```
 
 
 
