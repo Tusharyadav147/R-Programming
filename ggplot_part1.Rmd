@@ -91,10 +91,28 @@ gg + scale_x_continuous(breaks=seq(0, 0.1, 0.01), labels = LETTERS[1:11]) + scal
 ```
 ## If you need to reverse the scale
 ```{r}
-gg + scale_x_reverse(lim = c(.1,0))
+ggplot(midwest, aes(x=area, y=poptotal)) + geom_point(aes(col=state), size=3) + geom_smooth(method="lm") + coord_cartesian(xlim=c(0.1,0), ylim=c(0, 1000000)) + labs(title="Area Vs Population", subtitle="From midwest dataset", y="Population", x="Area", caption="Midwest Demographics") + scale_x_reverse(lim = c(.1,0))
 ```
+## To Customize the Entire Theme in One Shot using Pre-Built Themes
+```{r}
+gg + theme_bw() + labs(subtitle="BW Theme") 
+```
+```{r}
+gg + theme_classic() + labs(subtitle="Classic Theme")
+```
+```{r}
+gg <- ggplot(midwest, aes(x= area, y= poptotal)) + geom_point(aes(col=state, size= popdensity)) + geom_smooth(method= "loess", se=F) + coord_cartesian(xlim = c(0,.1), ylim = c(0,500000)) + labs(title= "Area Vs Population", y= "Population", x= "Area", caption = "Source:midwest")
 
-
+gg + theme(plot.title = element_text(size = 20, face = "bold", family = "American Typewriter", color= "tomato", hjust = 0.5, lineheight = 1.2))
+```
+## Modifying Legend
+```{r}
+gg + labs(color = "State", size= "Density")
+```
+## To Change Legend Labels and Point Colors for Categories
+```{r}
+gg + scale_color_manual(name= "State", labels= c("Illinois", "Indiana", "Michigan", "Ohio", "Wisconsin"), values = c("IL"="blue", "IN" = "red", "MI"="green", "OH"= "brown", "WI"= "orange"))
+```
 
 
 
