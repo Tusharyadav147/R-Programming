@@ -1,0 +1,60 @@
+## Initialize library and load dataset
+```{r}
+options(scipen = 999)
+library(ggplot2)
+theme_set(theme_bw())
+data("midwest", package = "ggplot2")
+```
+
+```{r}
+midwest <- read.csv("http://goo.gl/G1K41K")  
+midwest
+```
+
+## Scatter plot
+```{r}
+gg <- ggplot(midwest, aes(x= area, y= poptotal)) + geom_point(aes(col= state, size = popdensity)) + geom_smooth(method= "loess", se= F) + xlim(c(0,.1)) + ylim(c(0,500000)) + labs(title = "Scatter Plot", subtitle = "Area Vs Population", x = "Area", y = "Population", caption = "Source: midwest")
+plot(gg)
+```
+
+## Scatterplot with Encircling
+```{r}
+options(scipen = 999)
+library(ggplot2)
+library(ggalt)
+midwest_select <- midwest[midwest$poptotal > 350000 & 
+                            midwest$poptotal <= 500000 & 
+                            midwest$area > 0.01 & 
+                            midwest$area < 0.1, ]
+
+ggplot(midwest, aes(x= area, y= poptotal)) + geom_point(aes(col= state, size = popdensity)) + geom_smooth(method= "loess", se= F) + xlim(c(0,.1)) + ylim(c(0, 500000)) + geom_encircle(aes(x=area, y=poptotal), data= midwest_select, color= "red", size = 2, expand= 0.08) + labs(title = "Scatter Plot + Encircle", subtitle = "Area Vs Population", x = "Area", y = "Population", caption = "Source:midwest")
+```
+
+## Jitter Plot
+```{r}
+library(ggplot2)
+data(mpg, package= "ggplot2")
+theme_set(theme_bw())
+
+g <- ggplot(mpg, aes(cty, hwy))
+
+g + geom_point() + geom_smooth(method = "lm", se = F) + labs(title = "Scatterplot with overlapping points", x = "cty", y = "hwy", caption = "Source:midwest")
+
+```
+
+```{r}
+library(ggplot2)
+data("diamonds", package = "ggplot2")
+View(diamonds)
+ggplot(diamonds, aes(x=carat, y=price, color=clarity)) + geom_smooth(se=FALSE)
+```
+
+
+
+
+
+
+
+
+
+
