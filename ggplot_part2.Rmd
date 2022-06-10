@@ -1,3 +1,9 @@
+---
+output:
+  word_document: default
+  html_document: default
+  pdf_document: default
+---
 ## Initialize library and load dataset
 ```{r}
 options(scipen = 999)
@@ -8,7 +14,6 @@ data("midwest", package = "ggplot2")
 
 ```{r}
 midwest <- read.csv("http://goo.gl/G1K41K")  
-midwest
 ```
 
 ## Scatter plot
@@ -45,12 +50,75 @@ g + geom_point() + geom_smooth(method = "lm", se = F) + labs(title = "Scatterplo
 ```{r}
 library(ggplot2)
 data("diamonds", package = "ggplot2")
-View(diamonds)
+# View(diamonds)
 ggplot(diamonds, aes(x=carat, y=price, color=clarity)) + geom_smooth(se=FALSE)
+```
+## How to plot correlograms in r?
+```{r}
+library(ggcorrplot)
+data(mtcars) 
+corr <- round(cor(mtcars), 1)
+ggcorrplot(corr)
+
+```
+```{r}
+library(maps)
+map("state", interior = FALSE)
+map("state", boundary = TRUE, col="gray", add = TRUE)
+```
+## how to make a heatmap in R
+```{r}
+ds = data.frame(rnorm(5, 50, 20),rnorm(5, 50, 20),rnorm(5, 50, 20),rnorm(5, 50, 20))
+rn = c("Arm","Leg","Chest","Gut","Head")
+cn = c("Ann","Bob","Tom","Joy")
+x = data.matrix(ds, rownames.force = FALSE)
+heatmap(x, labRow=rn, labCol=cn, main = "Test Heat Map")
+```
+## Create a sample of 50 numbers which are incremented by 1.Create the binomial distribution,plot the graph for this sample
+```{r}
+# Create a sample of 50 numbers which are incremented by 1.
+x <- seq(0,50,by = 1)
+
+# Create the binomial distribution.
+y <- dbinom(x,50,0.5)
+
+# Plot the graph for this sample.
+plot(x,y)
+
+```
+## Suppose, a group of 25 people are surveyed as to their beer-drinking preference. The categories were (1) Domestic can, (2) Domestic bottle, (3) Microbrew and (4) import. The raw data is 3 4 1 1 3 4 3 3 1 3 2 1 2 1 2 3 2 3 1 1 1 1 4 3 1 Let’s make Suitable plot of both frequencies and proportions
+```{r}
+beer = c(3, 4, 1, 1, 3, 4, 3, 3, 1, 3, 2, 1, 2, 1, 2, 3, 2, 3, 1, 1, 1, 1, 4, 3, 1)
+
+barplot(beer)
+
+```
+
+```{r}
+barplot(table(beer))
+```
+
+```{r}
+barplot(table(beer)/length(beer)) 
+```
+
+## With the help of mtcar data plot a heat map.
+```{r}
+# The mtcars dataset:
+data <- as.matrix(mtcars, packages = "ggplot2")
+
+# Default Heatmap
+heatmap(data)
+```
+
+```{r}
+data("diamonds")
 ```
 
 
-
+```{r}
+ggplot(diamonds, aes(x=carat, y=price, color=clarity)) + geom_smooth(se=FALSE)
+```
 
 
 
