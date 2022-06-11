@@ -1,4 +1,4 @@
-## Write a R program to calculate the GCD of two numbers using recursive computation.
+## Write a R program to calculate the HCF of two numbers using recursive computation.
 ```{r}
 num1 <- as.integer(readline(prompt = "Enter a number:- "))
 num2 <- as.integer(readline(prompt = "Enter another number:- "))
@@ -62,6 +62,43 @@ search()
 library()
 ```
 
+## Write R Program to find ther factors of number
+```{r}
+num = as.integer(readline('Enter a number '))
+for (i in 1:num){
+ if((num %% i)==0){
+ print(i)
+ }
+}
+```
+## Write R Program to find he sum of first N natural Number
+```{r}
+num = as.integer(readline(prompt = "Enter a number: "))
+if(num < 0) {
+ print("Enter a positive number")
+} else {
+ sum = 0
+ while(num > 0) {
+ sum = sum + num
+ num = num - 1
+ }
+ print(paste("The sum is", sum))
+}
+```
+##  To extract or replace parts of factor
+```{r}
+library(dplyr)
+f <- as.factor(c("a", "b", "c"))
+print(f)
+f1 <- recode_factor(f, "a" = "x", "b" = "y")
+print(f1)
+```
+## Create a vector X of elements 5, 2, -1, 7, 4, 8, 12 and from it create a vector Y containing elements of x>4
+```{r}
+X<-c(5,2,-1,7,4,8,12)
+Y<- X[X>4]
+Y
+```
 
 
 
